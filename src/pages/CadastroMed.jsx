@@ -18,7 +18,6 @@ const CadastroMed = () => {
   }
   function submitCadMed(e) {
     e.preventDefault();
-      
   }
   return (
     <div>
@@ -104,6 +103,7 @@ const CadastroMed = () => {
             onChange={(e) => setPreco(e.target.value)}
             placeholder="Preço do medicamento."
           />
+
           {erroMsg && (
             <div className="alert alert-warning" role="alert">
               {erroMsg}

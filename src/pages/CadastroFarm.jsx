@@ -38,7 +38,6 @@ const CadastroFarm = () => {
     return valEmail.test(email);
   }
 
-
   function validarCelular(celular) {
     const celularLength = celular.length.value;
 
@@ -63,20 +62,23 @@ const CadastroFarm = () => {
     e.preventDefault();
 
     try {
-          
-      console.log(cnpj, email, razaoSocial, telefone, celular, cep);
-    } catch (sucess) {
-      setErroMsg("Ocorreu um erro ao validar os campos: " + setSucess);
-      return console.log(sucess)
+      salvar(cnpj, email, razaoSocial, celular, cep);
+    } catch (error) {
+      setErroMsg("Ocorreu um erro ao validar os campos: " + error.message);
+      console.log(error);
     }
   }
-  
+  function buscarCep() {
+    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+      .then((resposta) => resposta.json())
+      .then((dados) => setEndereco(dados));
+  }
+
   return (
     <div className="divPai">
       <h1>Cadastrar Nova Farmácia</h1>
 
       <Form onSubmit={submitCadastro}>
-        
         <div className="row">
           <Form.Group
             className="col-8 mb-3 grid"
@@ -139,7 +141,7 @@ const CadastroFarm = () => {
             )}
           </Form.Group>
         </div>
-          
+
         <div className="row">
           <Form.Group className="col-4 mb-3 grid" controlId="formBasicCelular">
             <Form.Label>Telefone Celular</Form.Label>
@@ -180,16 +182,15 @@ const CadastroFarm = () => {
         <Form.Group className="mb-3 grid" controlId="formBasicCep">
           <Form.Label>CEP</Form.Label>
           <Form.Control
-            className=""
-            as={IMaskInput}
-            mask="00000-000"
-            required
-            value={cep}
-            onChange={(e) => setCep(e.target.value)}
-            ondeChange={(evento) => atualizarCampo}
             type="text"
+            value={cep}
+            className=""
+            required
+            onChange={(e) => setCep(e.target.value)}
             placeholder="Digite o CEP."
           />
+          <input type="button" onClick={buscarCep} value="Buscar Endereço" />
+
           {erroMsg && (
             <div className="alert alert-warning" role="alert">
               {erroMsg}

@@ -5,6 +5,7 @@ const ListaFarm = () => {
     <div>
       Lista Farmacia
     </div>
+    
   )
 }
 
