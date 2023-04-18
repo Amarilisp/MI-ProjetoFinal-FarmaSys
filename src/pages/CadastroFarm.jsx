@@ -19,10 +19,7 @@ const CadastroFarm = () => {
   const [uf, setUf] = useState("");
   const [erroMsg, setErroMsg] = useState("");
   const [sucess, setSucess] = useState("");
-  /*
   const [endereco, setEndereco] = useState();
-  const [formulario, setFormulario] = useState({cep: "",});
-  */
 
   function validarCnpj(cnpj) {
     cnpj = cnpj.replace(/\D/g, ""); //Remove tudo o que não é dígito
@@ -71,13 +68,18 @@ const CadastroFarm = () => {
   function buscarCep() {
     fetch(`https://viacep.com.br/ws/${cep}/json/`)
       .then((resposta) => resposta.json())
-      .then((dados) => setEndereco(dados));
+      .then((dados) => {
+        setLogradouro(dados.logradouro);
+        setNumero(dados.numero);
+        setBairro(dados.bairro);
+        setCidade(dados.cidade);
+      })
+      .catch((error) => console.log(error));
   }
 
   return (
     <div className="divPai">
       <h1>Cadastrar Nova Farmácia</h1>
-
       <Form onSubmit={submitCadastro}>
         <div className="row">
           <Form.Group

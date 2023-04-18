@@ -13,11 +13,11 @@ export const routes = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/",
+        path: "/Login",
         element: <Home />,
       },
       {
-        path: "/",
+        path: "/lista-farmacia",
         element: <ListaFarm />,
       },
 
@@ -43,3 +43,5 @@ export const routes = createBrowserRouter([
     ],
   },
 ]);
+
+export default routes;

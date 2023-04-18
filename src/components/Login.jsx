@@ -27,13 +27,14 @@ const Login = () => {
     }
     setErroEmail("");
 
-    if (validarSenha.trim() === "") {
+    if (validarSenha()) {
       setErroSenha("Campo senha é obrigatório");
       return;
     }
     setErroSenha("");
     console.log(senha, "e", email);
   }
+  window.location.ref = "/lista-farmacia";
 
   return (
     <div className="card col-4 d-flex justify-content-between me-5">
