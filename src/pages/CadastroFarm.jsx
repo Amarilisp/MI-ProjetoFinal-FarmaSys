@@ -58,6 +58,23 @@ const CadastroFarm = () => {
   function submitCadastro(e) {
     e.preventDefault();
 
+    var listaFarmacias = localStorage.getItem("listaFarmacias") || [];
+    listaFarmacias.push({
+      razaoSocial,
+      cnpj,
+      nomeFantasia,
+      email,
+      celular,
+      cep,
+      logradouro,
+      numero,
+      complemento,
+      bairro,
+      cidade,
+      uf,
+    });
+    localStorage.setItem("listaFarmacias", JSON.stringify(listaFarmacias));
+
     try {
       salvar(cnpj, email, razaoSocial, celular, cep);
     } catch (error) {
