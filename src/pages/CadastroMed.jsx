@@ -18,6 +18,20 @@ const CadastroMed = () => {
   }
   function submitCadMed(e) {
     e.preventDefault();
+
+    var listaMed = localStorage.getItem("listaMedicamentos") || [];
+    listaMedicamentos.push({
+      cadMed,
+      lab,
+      dosagem,
+      descricao,
+      preco,
+      tipoMed,
+    });
+    localStorage.setItem(
+      "listaMedicamentos",
+      JSON.stringify(listaMedicamentos)
+    );
   }
   return (
     <div>
