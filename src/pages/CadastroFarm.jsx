@@ -95,7 +95,7 @@ const CadastroFarm = () => {
   }
 
   return (
-    <div className="divPai">
+    <div className="card divPai">
       <h1>Cadastrar Nova Farmácia</h1>
       <Form onSubmit={submitCadastro}>
         <div className="row">
@@ -180,7 +180,7 @@ const CadastroFarm = () => {
               </div>
             )}
           </Form.Group>
-          <Form.Group className="mb-6 grid" controlId="formBasicEmail">
+          <Form.Group className="col-4 mb-6 grid" controlId="formBasicEmail">
             <Form.Label>E-mail</Form.Label>
             <Form.Control
               className=""
@@ -196,128 +196,141 @@ const CadastroFarm = () => {
               </div>
             )}
           </Form.Group>
+
+          <Form.Group className="col-3 mb-3 grid" controlId="formBasicCep">
+            <Form.Label>CEP</Form.Label>
+            <Form.Control
+              type="text"
+              value={cep}
+              className=""
+              required
+              onChange={(e) => setCep(e.target.value)}
+              placeholder="Digite o CEP."
+            />
+            <input type="button" onClick={buscarCep} value="Buscar Endereço" />
+
+            {erroMsg && (
+              <div className="alert alert-warning" role="alert">
+                {erroMsg}
+              </div>
+            )}
+          </Form.Group>
         </div>
 
-        <Form.Group className="mb-3 grid" controlId="formBasicCep">
-          <Form.Label>CEP</Form.Label>
-          <Form.Control
-            type="text"
-            value={cep}
-            className=""
-            required
-            onChange={(e) => setCep(e.target.value)}
-            placeholder="Digite o CEP."
-          />
-          <input type="button" onClick={buscarCep} value="Buscar Endereço" />
+        <div className="row">
+          <Form.Group
+            className="col-6 mb-3 grid"
+            controlId="formBasicLogradouro"
+          >
+            <Form.Label>Logradouro</Form.Label>
+            <Form.Control
+              className=""
+              required
+              value={logradouro}
+              onChange={(e) => setLogradouro(e.target.value)}
+              type="text"
+              placeholder="Digite o logradouro."
+            />
+            {erroMsg && (
+              <div className="alert alert-warning" role="alert">
+                {erroMsg}
+              </div>
+            )}
+          </Form.Group>
 
-          {erroMsg && (
-            <div className="alert alert-warning" role="alert">
-              {erroMsg}
-            </div>
-          )}
-        </Form.Group>
+          <Form.Group
+            className="col-auto mb-3 grid"
+            controlId="formBasicNumero"
+          >
+            <Form.Label>Número</Form.Label>
+            <Form.Control
+              className=""
+              required
+              value={numero}
+              onChange={(e) => setNumero(e.target.value)}
+              type="number"
+              placeholder="Digite o número."
+            />
+            {erroMsg && (
+              <div className="alert alert-warning" role="alert">
+                {erroMsg}
+              </div>
+            )}
+          </Form.Group>
 
-        <Form.Group className="mb-3 grid" controlId="formBasicLogradouro">
-          <Form.Label>Logradouro</Form.Label>
-          <Form.Control
-            className=""
-            required
-            value={logradouro}
-            onChange={(e) => setLogradouro(e.target.value)}
-            type="text"
-            placeholder="Digite o logradouro."
-          />
-          {erroMsg && (
-            <div className="alert alert-warning" role="alert">
-              {erroMsg}
-            </div>
-          )}
-        </Form.Group>
+          <Form.Group
+            className="col-3 mb-auto grid"
+            controlId="formBasicComplemento"
+          >
+            <Form.Label>Complemento</Form.Label>
+            <Form.Control
+              className=""
+              required
+              value={complemento}
+              onChange={(e) => setComplemento(e.target.value)}
+              type="text"
+              placeholder="Digite o complemento, se houver."
+            />
+            {erroMsg && (
+              <div className="alert alert-warning" role="alert">
+                {erroMsg}
+              </div>
+            )}
+          </Form.Group>
+        </div>
 
-        <Form.Group className="mb-3 grid" controlId="formBasicNumero">
-          <Form.Label>Número</Form.Label>
-          <Form.Control
-            className=""
-            required
-            value={numero}
-            onChange={(e) => setNumero(e.target.value)}
-            type="number"
-            placeholder="Digite o número."
-          />
-          {erroMsg && (
-            <div className="alert alert-warning" role="alert">
-              {erroMsg}
-            </div>
-          )}
-        </Form.Group>
+        <div className="row">
+          <Form.Group className="col-3 mb-3 grid" controlId="formBasicBairro">
+            <Form.Label>Bairro</Form.Label>
+            <Form.Control
+              className=""
+              required
+              value={bairro}
+              onChange={(e) => setBairro(e.target.value)}
+              type="text"
+              placeholder="Digite o nome do bairro."
+            />
+            {erroMsg && (
+              <div className="alert alert-warning" role="alert">
+                {erroMsg}
+              </div>
+            )}
+          </Form.Group>
 
-        <Form.Group className="mb-3 grid" controlId="formBasicComplemento">
-          <Form.Label>Complemento</Form.Label>
-          <Form.Control
-            className=""
-            required
-            value={complemento}
-            onChange={(e) => setComplemento(e.target.value)}
-            type="text"
-            placeholder="Digite o complemento, se houver."
-          />
-          {erroMsg && (
-            <div className="alert alert-warning" role="alert">
-              {erroMsg}
-            </div>
-          )}
-        </Form.Group>
+          <Form.Group className="col-6 mb-3 grid" controlId="formBasicCidade">
+            <Form.Label>Cidade</Form.Label>
+            <Form.Control
+              className=""
+              required
+              value={cidade}
+              onChange={(e) => setCidade(e.target.value)}
+              type="text"
+              placeholder="Digite o nome da Cidade."
+            />
+            {erroMsg && (
+              <div className="alert alert-warning" role="alert">
+                {erroMsg}
+              </div>
+            )}
+          </Form.Group>
 
-        <Form.Group className="mb-3 grid" controlId="formBasicBairro">
-          <Form.Label>Bairro</Form.Label>
-          <Form.Control
-            className=""
-            required
-            value={bairro}
-            onChange={(e) => setBairro(e.target.value)}
-            type="text"
-            placeholder="Digite o nome do bairro."
-          />
-          {erroMsg && (
-            <div className="alert alert-warning" role="alert">
-              {erroMsg}
-            </div>
-          )}
-        </Form.Group>
-
-        <Form.Group className="mb-3 grid" controlId="formBasicCidade">
-          <Form.Label>Cidade</Form.Label>
-          <Form.Control
-            className=""
-            required
-            value={cidade}
-            onChange={(e) => setCidade(e.target.value)}
-            type="text"
-            placeholder="Digite o nome da Cidade."
-          />
-          {erroMsg && (
-            <div className="alert alert-warning" role="alert">
-              {erroMsg}
-            </div>
-          )}
-        </Form.Group>
-
-        <Form.Group className="mb-3 grid" controlId="formBasicUF">
-          <Form.Label>UF</Form.Label>
-          <Form.Control
-            className=""
-            required
-            value={uf}
-            onChange={(e) => setUf(e.target.value)}
-            type="text"
-            placeholder="Digite o Estado."
-          />
-          {erroMsg && (
-            <div className="alert alert-warning" role="alert">
-              {erroMsg}
-            </div>
-          )}
-        </Form.Group>
+          <Form.Group className="col-3 mb-3 grid" controlId="formBasicUF">
+            <Form.Label>UF</Form.Label>
+            <Form.Control
+              className=""
+              required
+              value={uf}
+              onChange={(e) => setUf(e.target.value)}
+              type="text"
+              placeholder="Digite o Estado."
+            />
+            {erroMsg && (
+              <div className="alert alert-warning" role="alert">
+                {erroMsg}
+              </div>
+            )}
+          </Form.Group>
+        </div>
         <Button type="submit"> Cadastrar </Button>
       </Form>
     </div>

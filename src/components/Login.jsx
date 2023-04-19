@@ -37,7 +37,7 @@ const Login = () => {
   window.location.ref = "/lista-farmacia";
 
   return (
-    <div className="card col-4 d-flex justify-content-between me-5">
+    <div className="card col-5 d-flex justify-content-between me-5">
       <Form onSubmit={validLog} className="container">
         <Form.Group className="col-8 mb-3 grid" controlId="formBasicEmailLogin">
           <Form.Label>e-mail</Form.Label>
