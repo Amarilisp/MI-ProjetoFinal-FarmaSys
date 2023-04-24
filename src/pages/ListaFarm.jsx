@@ -1,12 +1,32 @@
-import React from 'react'
+import React from "react";
 
 const ListaFarm = () => {
-  return (
-    <div>
-      Lista Farmacia
-    </div>
-    
-  )
-}
+  const listaFarm = JSON.parse(localStorage.getItem("listaFarmacias")) || [];
 
-export default ListaFarm
+  return (
+    <div className="flex  bg-slate-200 mx gap-4">
+      <ul>
+        {listaFarm.map((farmacia) => {
+          console.log(farmacia);
+          return (
+            <li key={farmacia.cnpj} className="flex flex-col m-10">
+              <h3 className="font-bold text-green-600">
+                {farmacia.nomeFantasia} ({farmacia.razaoSocial})
+              </h3>
+              <p>
+                {" "}
+                Endereço: {farmacia.logradouro}, {farmacia.Numero},{" "}
+                {farmacia.Complemento} {farmacia.bairro}, {farmacia.cidade},{" "}
+                {farmacia.estado}, CEP: {farmacia.cep}
+              </p>
+              <p>Celular: {farmacia.celular}</p>
+              <p>Email: {farmacia.email}</p>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
+
+export default ListaFarm;

@@ -33,46 +33,74 @@ const Login = () => {
     }
     setErroSenha("");
     console.log(senha, "e", email);
+
+    window.location.ref = "/lista-farmacia";
   }
-  window.location.ref = "/lista-farmacia";
 
+  // function validLog(e) {
+  //   e.preventDefault();
+
+  //   if (!validarEmail(email)) {
+  //     setErroEmail("Campo email é obrigatório!");
+  //     return;
+  //   }
+  //   setErroEmail("");
+
+  //   if (!validarSenha(senha)) {
+  //     setErroSenha("Campo senha é obrigatório");
+  //     return;
+  //   }
+  //   setErroSenha("");
+
+  //   // redirecionar para a página correta
+  //   window.location.href = "/lista-farmacia";
+  // }
   return (
-    <div className="card col-5 d-flex justify-content-between me-5">
-      <Form onSubmit={validLog} className="container">
-        <Form.Group className="col-8 mb-3 grid" controlId="formBasicEmailLogin">
-          <Form.Label>e-mail</Form.Label>
-          <Form.Control
-            className="w"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            type="email"
-            placeholder="Digite seu email"
-          />
-          {erroEmail && (
-            <div className="alert alert-warning" role="alert">
-              {erroEmail}
-            </div>
-          )}
-        </Form.Group>
+    <div className="align-items-center w-100 h-100 d-flex justify-content-center">
+      <div>
+        <div className="p-5 gap-2 align-items-center flex-column d-flex justify-content-center container d-flex p-2 bg-light border">
+          <Form
+            onSubmit={validLog}
+            className="gap-2 align-items-center flex-column d-flex justify-content-center container"
+          >
+            <h4>Login</h4>
+            <Form.Group controlId="formBasicEmailLogin">
+              <Form.Control
+                className=""
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                placeholder="Digite seu email"
+              />
+              {erroEmail && (
+                <div className="alert alert-warning" role="alert">
+                  {erroEmail}
+                </div>
+              )}
+            </Form.Group>
 
-        <Form.Group className="col-8 mb-3 grid" controlId="formBasicPassword">
-          <Form.Label>senha</Form.Label>
-          <Form.Control
-            required
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-            type="password"
-            placeholder="Digite sua senha"
-          />
-          {erroSenha && (
-            <div className="alert alert-warning" role="alert">
-              {erroSenha}
-            </div>
-          )}
-        </Form.Group>
-        <Button type="submit">enviar</Button>
-      </Form>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Control
+                required
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+                type="password"
+                minLength="8"
+                // pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+                placeholder="Senha"
+              />
+              {erroSenha && (
+                <div className="alert alert-warning" role="alert">
+                  {erroSenha}
+                </div>
+              )}
+            </Form.Group>
+
+            <Button type="submit">enviar</Button>
+          </Form>
+        </div>
+      </div>
     </div>
   );
 };

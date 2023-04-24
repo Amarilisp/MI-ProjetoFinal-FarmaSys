@@ -1,10 +1,14 @@
 import { Outlet } from "react-router-dom";
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
+    <div>
+      <NavBar />
       <Outlet />
+      <Footer />
     </div>
   );
 }

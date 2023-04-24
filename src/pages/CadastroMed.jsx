@@ -2,10 +2,9 @@ import React from "react";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { IMaskInput } from "react-imask";
 
 const CadastroMed = () => {
-  const [cadMed, setCadMed] = useState("");
+  const [nomeMed, setCadMed] = useState("");
   const [lab, setLab] = useState("");
   const [dosagem, setDosagem] = useState("");
   const [descricao, setDescricao] = useState("");
@@ -19,135 +18,142 @@ const CadastroMed = () => {
   function submitCadMed(e) {
     e.preventDefault();
 
-    var listaMed = localStorage.getItem("listaMedicamentos") || [];
-    listaMedicamentos.push({
-      cadMed,
+    /*
+    var listaMed = JSON.parse(
+      localStorage.getItem("listaMedicamentos") || "[]"
+    );
+    */
+
+    var listaMed = JSON.parse(localStorage.getItem("listaMedicamentos")) || [];
+    listaMed.push({
+      nomeMed,
       lab,
       dosagem,
       descricao,
       preco,
       tipoMed,
     });
-    localStorage.setItem(
-      "listaMedicamentos",
-      JSON.stringify(listaMedicamentos)
-    );
+    localStorage.setItem("listaMedicamentos", JSON.stringify(listaMed));
   }
   return (
-    <div>
-      <div className="divPai"> </div>
-      <h1>Cadastro de Novos Medicamento</h1>
+    <div className="h-100 container d-flex align-items-center justify-content-center">
+      <div className="bg-light border p-2 card align-items-center divPai">
+        <h3 className=" align-items-center">Cadastro de Novos Medicamentos</h3>
 
-      <Form onSubmit={submitCadMed}>
-        <Form.Group className="mb-3 grid" controlId="formBasicMedicamento">
-          <Form.Label>Nome do Medicamento</Form.Label>
-          <Form.Control
-            className=""
-            required
-            value={cadMed}
-            onChange={(e) => setCadMed(e.target.value)}
-            type="text"
-            placeholder="Nome do medicamento."
-          />
-          {erroMsg && (
-            <div className="alert alert-warning" role="alert">
-              {erroMsg}
+        <Form onSubmit={submitCadMed}>
+          <div className="row">
+            <Form.Group
+              className="col-4 mb-3 grid"
+              controlId="formBasicMedicamento"
+            >
+              <Form.Control
+                className=""
+                required
+                value={nomeMed}
+                onChange={(e) => setCadMed(e.target.value)}
+                type="text"
+                placeholder="Medicamento"
+              />
+              {erroMsg && (
+                <div className="alert alert-warning" role="alert">
+                  {erroMsg}
+                </div>
+              )}
+            </Form.Group>
+            <Form.Group className="col-4 mb-3 grid" controlId="formBasicLab">
+              <Form.Control
+                className=""
+                required
+                value={lab}
+                onChange={(e) => setLab(e.target.value)}
+                type="text"
+                placeholder="Laboratório"
+              />
+              {erroMsg && (
+                <div className="alert alert-warning" role="alert">
+                  {erroMsg}
+                </div>
+              )}
+            </Form.Group>
+
+            <Form.Group
+              className="col-4 mb-3 grid"
+              controlId="formBasicdosagem"
+            >
+              <Form.Control
+                className=""
+                required
+                value={dosagem}
+                onChange={(e) => setDosagem(e.target.value)}
+                type="text"
+                placeholder="Dosagem"
+              />
+              {erroMsg && (
+                <div className="alert alert-warning" role="alert">
+                  {erroMsg}
+                </div>
+              )}
+            </Form.Group>
+          </div>
+          <div>
+            <div className="row">
+              <Form.Group className="mb-3 grid" controlId="formBasicPreco">
+                <Form.Control
+                  className=""
+                  type="number"
+                  required
+                  value={preco}
+                  onChange={(e) => setPreco(e.target.value)}
+                  placeholder="Preço."
+                />
+
+                {erroMsg && (
+                  <div className="alert alert-warning" role="alert">
+                    {erroMsg}
+                  </div>
+                )}
+              </Form.Group>
+
+              <Form.Group className="mb-3 grid" controlId="formBasicTipoMed">
+                <Form.Select
+                  aria-label="Medicamento controlado?"
+                  as="select"
+                  required
+                  value={tipoMed}
+                  onChange={(e) => setTipoMed(e.target.value)}
+                >
+                  <option value="x"> Medicamento controlado? </option>
+                  <option value="sim"> Sim </option>
+                  <option value="não"> Não </option>
+                </Form.Select>
+                {erroMsg && (
+                  <div className="alert alert-warning" role="alert">
+                    {erroMsg}
+                  </div>
+                )}
+              </Form.Group>
             </div>
-          )}
-        </Form.Group>
 
-        <Form.Group className="mb-3 grid" controlId="formBasicLab">
-          <Form.Label>Laboratório</Form.Label>
-          <Form.Control
-            className=""
-            required
-            value={lab}
-            onChange={(e) => setLab(e.target.value)}
-            type="text"
-            placeholder="Nome do laboratório."
-          />
-          {erroMsg && (
-            <div className="alert alert-warning" role="alert">
-              {erroMsg}
-            </div>
-          )}
-        </Form.Group>
-
-        <Form.Group className="mb-3 grid" controlId="formBasicdosagem">
-          <Form.Label>Dosagem</Form.Label>
-          <Form.Control
-            className=""
-            required
-            value={dosagem}
-            onChange={(e) => setDosagem(e.target.value)}
-            type="text"
-            placeholder="Dosagem do medicamento."
-          />
-          {erroMsg && (
-            <div className="alert alert-warning" role="alert">
-              {erroMsg}
-            </div>
-          )}
-        </Form.Group>
-
-        <Form.Group className="mb-3 grid" controlId="formBasicDescricao">
-          <Form.Label>Descrição do medicamento</Form.Label>
-          <Form.Control
-            className=""
-            required
-            value={descricao}
-            onChange={(e) => setDescricao(e.target.value)}
-            type="textarea"
-            placeholder="Descrição do medicamento."
-          />
-          {erroMsg && (
-            <div className="alert alert-warning" role="alert">
-              {erroMsg}
-            </div>
-          )}
-        </Form.Group>
-
-        <Form.Group className="mb-3 grid" controlId="formBasicPreco">
-          <Form.Label>Preço unitário do medicamento</Form.Label>
-          <Form.Control
-            className=""
-            type="number"
-            required
-            value={preco}
-            onChange={(e) => setPreco(e.target.value)}
-            placeholder="Preço do medicamento."
-          />
-
-          {erroMsg && (
-            <div className="alert alert-warning" role="alert">
-              {erroMsg}
-            </div>
-          )}
-        </Form.Group>
-
-        <Form.Group className="mb-3 grid" controlId="formBasicTipoMed">
-          <Form.Label>Medicamento controlado?</Form.Label>
-          <Form.Select aria-label="Selecione uma opção.">
-            <option value=""> Selecione uma opção. </option>
-            <option value="sim"> Sim </option>
-            <option value="não"> Não </option>
-          </Form.Select>
-          <Form.Control
-            className=""
-            required
-            value={tipoMed}
-            onChange={(e) => setTipoMed(e.target.value)}
-            type="select"
-            placeholder=""
-          />
-          {erroMsg && (
-            <div className="alert alert-warning" role="alert">
-              {erroMsg}
-            </div>
-          )}
-        </Form.Group>
-        <Button type="submit"> Cadastrar </Button>
-      </Form>
+            <Form.Group className="mb-3 grid" controlId="formBasicDescricao">
+              <Form.Control
+                className=""
+                rows={5}
+                required
+                value={descricao}
+                onChange={(e) => setDescricao(e.target.value)}
+                as="textarea"
+                placeholder="Descrição"
+              />
+              {erroMsg && (
+                <div className="alert alert-warning" role="alert">
+                  {erroMsg}
+                </div>
+              )}
+            </Form.Group>
+          </div>
+          <Button type="submit"> Cadastrar </Button>
+        </Form>
+      </div>
     </div>
   );
 };
