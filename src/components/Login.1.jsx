@@ -4,7 +4,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+export function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [erroEmail, setErroEmail] = useState("");
@@ -35,7 +36,6 @@ function Login() {
     setErroSenha("");
     console.log(senha, "e", email);
 
-    const navigate = useNavigate();
     navigate("/lista-farmacia");
   }
 
@@ -88,5 +88,3 @@ function Login() {
     </div>
   );
 }
-
-export default Login;

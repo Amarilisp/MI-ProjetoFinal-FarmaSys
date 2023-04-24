@@ -74,6 +74,7 @@ const CadastroFarm = () => {
       uf,
     });
     localStorage.setItem("listaFarmacias", JSON.stringify(listaFarmacias));
+    alert("Dados enviados com sucesso!");
   }
   function buscarCep() {
     fetch(`https://viacep.com.br/ws/${cep}/json/`)
@@ -311,7 +312,12 @@ const CadastroFarm = () => {
               )}
             </Form.Group>
           </div>
-          <Button type="submit"> Cadastrar </Button>
+
+          <div class="d-grid gap-2">
+            <Button class="btn btn-primary" type="submit">
+              Cadastrar Farmácia
+            </Button>
+          </div>
         </Form>
       </div>
     </div>

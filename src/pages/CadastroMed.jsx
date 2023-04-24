@@ -34,7 +34,19 @@ const CadastroMed = () => {
       tipoMed,
     });
     localStorage.setItem("listaMedicamentos", JSON.stringify(listaMed));
+    alert("Dados enviados com sucesso!");
+    //limparDados();
   }
+
+  //função de limpar os campos do input
+  // const limparDados = () => {
+  //   setCadMed("");
+  //   setLab("");
+  //   setDosagem("");
+  //   setPreco("");
+  //   setTipoMed("");
+  //   setDescricao("");
+  // };
   return (
     <div className="mt-5 h-100 container d-flex align-items-center justify-content-center">
       <div className="bg-light border p-2 card align-items-center divPai">
@@ -151,7 +163,12 @@ const CadastroMed = () => {
               )}
             </Form.Group>
           </div>
-          <Button type="submit"> Cadastrar </Button>
+
+          <div class="d-grid gap-2">
+            <Button class="btn btn-primary" type="submit">
+              Cadastrar Medicamento
+            </Button>
+          </div>
         </Form>
       </div>
     </div>
