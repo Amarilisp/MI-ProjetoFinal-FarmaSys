@@ -2,7 +2,13 @@ function Footer() {
   return (
     <footer
       className="t-5 mb-1 bg-secondary-subtle mt-5 p-1 text-sm text-center"
-      style={{ fontSize: "4px" }}
+      style={{
+        fontSize: "4px",
+        color: "#ffff",
+        position: "absolute",
+        bottom: "0",
+        width: "100%",
+      }}
     >
       <h5>Pharmacy Central System</h5>
       <h6>@amarilispequeno 2023</h6>

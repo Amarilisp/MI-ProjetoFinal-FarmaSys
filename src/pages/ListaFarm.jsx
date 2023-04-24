@@ -4,19 +4,19 @@ const ListaFarm = () => {
   const listaFarm = JSON.parse(localStorage.getItem("listaFarmacias")) || [];
 
   return (
-    <div className="flex  bg-slate-200 mx gap-4">
+    <div className="flex bg-slate-200 mx gap-4">
       <ul>
         {listaFarm.map((farmacia) => {
           console.log(farmacia);
           return (
             <li key={farmacia.cnpj} className="flex flex-col m-10">
-              <h3 className="font-bold text-green-600">
+              <h5 className="font-bold text-green">
                 {farmacia.nomeFantasia} ({farmacia.razaoSocial})
-              </h3>
+              </h5>
               <p>
                 {" "}
-                Endereço: {farmacia.logradouro}, {farmacia.Numero},{" "}
-                {farmacia.Complemento} {farmacia.bairro}, {farmacia.cidade},{" "}
+                Endereço: {farmacia.logradouro}, {farmacia.numero},{" "}
+                {farmacia.complemento} {farmacia.bairro}, {farmacia.cidade},{" "}
                 {farmacia.estado}, CEP: {farmacia.cep}
               </p>
               <p>Celular: {farmacia.celular}</p>

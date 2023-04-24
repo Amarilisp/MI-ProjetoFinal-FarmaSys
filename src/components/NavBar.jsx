@@ -1,11 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 function NavBar() {
   return (
-    <div className="mb-4">
-      <ul className="nav justify-content-center">
-        <li className="nav-item">
+    <div className="mb-8">
+      <ul className="nav d-flex justify-content-center align-items-center">
+        <li className="nav-item d-flex align-items-center">
+          <div class="navbar-header">
+            <img src={logo} height={40} className="d-inline-block mr-2 ml-2" />
+          </div>
           <a
             className="nav-link dropdown-toggle"
             data-bs-toggle="dropdown"

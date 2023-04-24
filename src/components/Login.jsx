@@ -37,26 +37,8 @@ const Login = () => {
     window.location.ref = "/lista-farmacia";
   }
 
-  // function validLog(e) {
-  //   e.preventDefault();
-
-  //   if (!validarEmail(email)) {
-  //     setErroEmail("Campo email é obrigatório!");
-  //     return;
-  //   }
-  //   setErroEmail("");
-
-  //   if (!validarSenha(senha)) {
-  //     setErroSenha("Campo senha é obrigatório");
-  //     return;
-  //   }
-  //   setErroSenha("");
-
-  //   // redirecionar para a página correta
-  //   window.location.href = "/lista-farmacia";
-  // }
   return (
-    <div className="align-items-center w-100 h-100 d-flex justify-content-center">
+    <div className="mt-5 align-items-center w-100 h-100 d-flex justify-content-center">
       <div>
         <div className="p-5 gap-2 align-items-center flex-column d-flex justify-content-center container d-flex p-2 bg-light border">
           <Form

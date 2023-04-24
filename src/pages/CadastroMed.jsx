@@ -36,7 +36,7 @@ const CadastroMed = () => {
     localStorage.setItem("listaMedicamentos", JSON.stringify(listaMed));
   }
   return (
-    <div className="h-100 container d-flex align-items-center justify-content-center">
+    <div className="mt-5 h-100 container d-flex align-items-center justify-content-center">
       <div className="bg-light border p-2 card align-items-center divPai">
         <h3 className=" align-items-center">Cadastro de Novos Medicamentos</h3>
 
