@@ -12,17 +12,21 @@ const CadastroMed = () => {
   const [tipoMed, setTipoMed] = useState("");
   const [erroMsg, setErroMsg] = useState("");
 
+  //função de limpar os campos do input
+  // const limparDados = () => {
+  //   setCadMed("");
+  //   setLab("");
+  //   setDosagem("");
+  //   setPreco("");
+  //   setTipoMed("");
+  //   setDescricao("");
+  // };
+
   function validarCadMed() {
     return;
   }
   function submitCadMed(e) {
     e.preventDefault();
-
-    /*
-    var listaMed = JSON.parse(
-      localStorage.getItem("listaMedicamentos") || "[]"
-    );
-    */
 
     var listaMed = JSON.parse(localStorage.getItem("listaMedicamentos")) || [];
     listaMed.push({
@@ -38,15 +42,6 @@ const CadastroMed = () => {
     //limparDados();
   }
 
-  //função de limpar os campos do input
-  // const limparDados = () => {
-  //   setCadMed("");
-  //   setLab("");
-  //   setDosagem("");
-  //   setPreco("");
-  //   setTipoMed("");
-  //   setDescricao("");
-  // };
   return (
     <div className="mt-5 h-100 container d-flex align-items-center justify-content-center">
       <div className="bg-light border p-2 card align-items-center divPai">
@@ -134,9 +129,9 @@ const CadastroMed = () => {
                   value={tipoMed}
                   onChange={(e) => setTipoMed(e.target.value)}
                 >
-                  <option value="x"> Medicamento controlado? </option>
-                  <option value="sim"> Sim </option>
-                  <option value="não"> Não </option>
+                  <option value=""> Tipo de Medicamento: </option>
+                  <option value="controlado"> Controlado </option>
+                  <option value="comum"> Comum </option>
                 </Form.Select>
                 {erroMsg && (
                   <div className="alert alert-warning" role="alert">

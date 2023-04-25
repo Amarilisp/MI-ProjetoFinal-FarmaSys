@@ -10,8 +10,8 @@ const ListaFarm = () => {
           console.log(farmacia);
           return (
             <li key={farmacia.cnpj} className="flex flex-col m-10">
-              <h5 className="font-bold text-green">
-                {farmacia.nomeFantasia} ({farmacia.razaoSocial})
+              <h5 className="font-bold text-#198754">
+                {farmacia.nomeFantasia} {farmacia.razaoSocial}
               </h5>
               <p>
                 {" "}

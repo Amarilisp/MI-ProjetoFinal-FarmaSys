@@ -9,6 +9,7 @@ function Login() {
   const [senha, setSenha] = useState("");
   const [erroEmail, setErroEmail] = useState("");
   const [erroSenha, setErroSenha] = useState("");
+  const navigate = useNavigate();
 
   function validarEmail(email) {
     const valEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -35,7 +36,6 @@ function Login() {
     setErroSenha("");
     console.log(senha, "e", email);
 
-    const navigate = useNavigate();
     navigate("/lista-farmacia");
   }
 

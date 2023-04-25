@@ -7,7 +7,7 @@ function NavBar() {
     <div className="mb-8">
       <ul className="nav d-flex justify-content-center align-items-center">
         <li className="nav-item d-flex align-items-center">
-          <div class="navbar-header">
+          <div className="navbar-header">
             <img src={logo} height={40} className="d-inline-block mr-2 ml-2" />
           </div>
           <a

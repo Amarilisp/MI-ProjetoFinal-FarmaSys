@@ -1,15 +1,7 @@
 import React from "react";
-import Card from "react-bootstrap/Card";
 
-const MedicamentoCard = ({ medicamento }) => {
-  return (
-    <Card>
-      <Card.Body>
-        {medicamento.nomeMed} {medicamento.lab} {medicamento.dosagem} - R$
-        {medicamento.preco} {medicamento.tipoMed}
-      </Card.Body>
-    </Card>
-  );
+const ListaMed = () => {
+  return <div>Lista Medicamento</div>;
 };
 
-export default MedicamentoCard;
+export default ListaMed;
