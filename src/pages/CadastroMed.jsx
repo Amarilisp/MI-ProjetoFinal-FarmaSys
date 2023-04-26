@@ -161,7 +161,10 @@ const CadastroMed = () => {
 
           <div class="d-grid gap-2">
             <Button class="btn btn-primary" type="submit">
-              Cadastrar Medicamento
+              Cadastrar
+            </Button>
+            <Button class="btn btn-primary" type="reset">
+              Limpar
             </Button>
           </div>
         </Form>

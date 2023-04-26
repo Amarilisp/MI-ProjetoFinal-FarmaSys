@@ -14,62 +14,86 @@ const ListaFarm = () => {
   const listaFarm = JSON.parse(localStorage.getItem("listaFarmacias")) || [];
 
   const exibirTabela = (item) => setTabelaFarmacia(item);
+  const [showModal, setShowModal] = useState(false);
   return (
-    <Row className="">
-      {Object.keys(listaFarm).map((item) => {
-        const farmacia = listaFarm[item];
-        return (
-          <Table key={item} style={{ width: "" }}>
-            <Table.Title>{farmacia.razaoSocial}</Table.Title>
-            <Table.Text>{farmacia.cnpj}</Table.Text>
-            <Button onClick={() => exibirTabela(item)}>
-              {" "}
-              Dados da Farmácia
-            </Button>
-            {tabelaFarmacia === item && (
-              <Modal show={true} onHide={() => setTabelaFarmacia(null)}>
-                <Modal.Header>
-                  <Modal.Body>
-                    <ListGroup>
-                      <ListGroupItem>
-                        Nome da Farmácia: {farmacia.razaoSocial}
-                      </ListGroupItem>
+    <div className="">
+      <Row className="border mt-5 m-5">
+        <Table>
+          <thead>
+            <tr>
+              <th>Nome Fantasia</th>
+              <th>Cidade</th>
+              <th>UF</th>
+            </tr>
+          </thead>
+          <tbody>
+            {listaFarm.map((farmacia) => {
+              return (
+                <tr>
+                  <td>{farmacia.nomeFantasia}</td>
+                  <td>{farmacia.cidade}</td>
+                  <td>{farmacia.uf}</td>
+                  <td>
+                    <Button onClick={() => exibirTabela(farmacia)}>
+                      Dados da Farmácia
+                    </Button>
+                    {tabelaFarmacia == farmacia.cnpj && (
+                      <Modal
+                        show={showModal}
+                        onHide={() => setTabelaFarmacia({})}
+                      >
+                        <Modal.Header>Titulo</Modal.Header>
+                        <Modal.Body>
+                          <ListGroup>
+                            <ListGroupItem>
+                              Razão Social: {farmacia.razaoSocial}
+                            </ListGroupItem>
 
-                      <ListGroupItem>Farmácia: {farmacia.cnpj}</ListGroupItem>
+                            <ListGroupItem>
+                              Farmácia: {farmacia.cnpj}
+                            </ListGroupItem>
 
-                      <ListGroupItem>
-                        Farmácia: {farmacia.nomeFantasia}
-                      </ListGroupItem>
+                            <ListGroupItem>
+                              Nome Fantasia: {farmacia.nomeFantasia}
+                            </ListGroupItem>
 
-                      <ListGroupItem>
-                        Farmácia: {farmacia.celular}
-                      </ListGroupItem>
+                            <ListGroupItem>
+                              Celular: {farmacia.celular}
+                            </ListGroupItem>
 
-                      <ListGroupItem>
-                        Farmácia: {farmacia.logradouro}
-                      </ListGroupItem>
+                            <ListGroupItem>
+                              Logradouro: {farmacia.logradouro}
+                            </ListGroupItem>
 
-                      <ListGroupItem>Farmácia: {farmacia.numero}</ListGroupItem>
+                            <ListGroupItem>
+                              Número: {farmacia.numero}
+                            </ListGroupItem>
 
-                      <ListGroupItem>
-                        Farmácia: {farmacia.complemento}
-                      </ListGroupItem>
+                            <ListGroupItem>
+                              Complemento: {farmacia.complemento}
+                            </ListGroupItem>
 
-                      <ListGroupItem>Farmácia: {farmacia.bairro}</ListGroupItem>
+                            <ListGroupItem>
+                              Bairro: {farmacia.bairro}
+                            </ListGroupItem>
 
-                      <ListGroupItem>Farmácia: {farmacia.cidade}</ListGroupItem>
+                            <ListGroupItem>
+                              Cidade: {farmacia.cidade}
+                            </ListGroupItem>
 
-                      <ListGroupItem>Farmácia: {farmacia.uf}</ListGroupItem>
-                    </ListGroup>
-                  </Modal.Body>
-                </Modal.Header>
-              </Modal>
-            )}
-          </Table>
-        );
-      })}
-      ;
-    </Row>
+                            <ListGroupItem> UF: {farmacia.uf} </ListGroupItem>
+                          </ListGroup>
+                        </Modal.Body>
+                      </Modal>
+                    )}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </Table>
+      </Row>
+    </div>
   );
 };
 

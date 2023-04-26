@@ -94,7 +94,7 @@ const CadastroFarm = () => {
     <div className="mt-5 h-100 container d-flex align-items-center justify-content-center">
       <div className="bg-light border p-2 card align-items-center divPai">
         <h3 className="">Cadastro de Nova Farmácia</h3>
-        <Form onSubmit={submitCadastro}>
+        <Form id="formulario" onSubmit={submitCadastro}>
           <div className="row">
             <Form.Group
               className="col-8 mb-3 grid"
@@ -315,7 +315,11 @@ const CadastroFarm = () => {
 
           <div class="d-grid gap-2">
             <Button class="btn btn-primary" type="submit">
-              Cadastrar Farmácia
+              Cadastrar
+            </Button>
+
+            <Button type="reset" class="btn btn-secondary btn-lg">
+              Limpar
             </Button>
           </div>
         </Form>
